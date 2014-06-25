@@ -15,7 +15,7 @@ import javax.interceptor.InvocationContext;
 
 /**
  *
- * @author Oppi
+ * @see kurssi.ejb.TestUsedBean
  */
 public class InterceptBean {
 	@AroundInvoke
