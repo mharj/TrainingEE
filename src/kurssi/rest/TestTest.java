@@ -6,10 +6,13 @@
 
 package kurssi.rest;
 
+import com.google.gson.Gson;
+import javax.ejb.EJB;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
+import kurssi.ejb.ForumServicesEJB;
 
 /**
  *
@@ -17,11 +20,12 @@ import javax.ws.rs.core.Response;
  */
 @Path("users")
 public class RestTest {
-	@Path("user")
+	Gson gson = new Gson();
+	@EJB ForumServicesEJB forumService;
 	@GET
-	@Produces("text/plain")
+	@Produces("application/json")
 	public Response getUser() {
-		return Response.status(200).entity("getUser is called").build();
+		return Response.status(200).entity( gson.toJson( forumService.findAllUsers() ) ).build();
 	}
 }
 
