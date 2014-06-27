@@ -11,8 +11,9 @@
 		<h:outputStylesheet library="css" name="base.css"  />
     </h:head>
 	<h:body>
+		<h1><h:outputText value="#{text.title}" /></h1>
 		<p:dataTable value="#{areaBean.areaList}" var="area">
-			<f:facet name="header">List of areas</f:facet>
+			<f:facet name="header">#{text.areaList}</f:facet>
 			<p:column>
 				<f:facet name="header"><h:outputText value="Name" /></f:facet>
 				<h:outputLink value="view.jsf">
