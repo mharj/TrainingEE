@@ -32,6 +32,22 @@
 				 </f:facet>
 				 #{message.person.firstName} #{message.person.lastName}
 			 </p:column>			
-		</p:dataTable>		
+		</p:dataTable>
+		<hr/>
+		<h:form>
+			<p:selectOneListbox value="#{areaBean.personId}">
+				<f:selectItems value="#{areaBean.userList}"  var="user" itemLabel="#{user.firstName} #{user.lastName}" itemValue="#{user.personId}" />
+			</p:selectOneListbox>
+			<input type="hidden" name="id" value="#{areaBean.lastAreaId}" />
+			<p:inputText id="topic" value="#{areaBean.message.topic}" /><br/>
+			<p:watermark for="topic" value="Topic" />
+			<p:inputText id="message" value="#{areaBean.message.messageText}" /><br/>
+			<p:watermark for="message" value="Message" />
+			<p:commandButton action="#{areaBean.saveMessage()}" value="Create" icon="ui-icon-plus" ajax="false">
+				<f:param name="id" value="#{areaBean.lastAreaId}"/>
+			</p:commandButton>
+			<br/>
+		</h:form>
     </h:body>
 </html>
+
